@@ -1,0 +1,108 @@
+-------------------------------------------------------------------------------
+WHAT TO DO AFTER A DEBIAN BASIC INSTALL
+
+First we have to add our user to the sudoers group.
+We have to first log as root running
+
+Log as root runnning
+
+	# su root
+
+then install sudo and add our user to the sudoers group
+
+	# apt install sudo
+	# adduser $USER sudo
+
+We can then log back into our user running
+
+	# su $USER
+
+In order to have a graphical environment, we install X.org running
+
+	# sudo apt install xorg
+
+Instead of installing a desktop environment, we will install a window manager.
+There are countless window managers, one of the most prominent is i3.
+instead of using i3 we will install dwm.
+Since to configure this window manager we have to recompile it, we need to
+download the source code.
+To do that we use git
+
+	# sudo apt install git
+
+now we can download the dwm official repository from suckless
+
+	# mkdir -p ~/docs/repos
+	# cd ~/docs/repos
+	# git clone https://git.suckless.org/dwm
+
+Now we have a dwm directory in our repos folder.
+We now cd into our dwm source directory
+
+	# cd dwm
+
+We then install the needed dependencies for dwm
+
+	# sudo apt install make gcc libx11-dev libxft-dev libxinerama-dev
+
+Nothing else should be missing, we can compile dwm with
+
+	# sudo make clean install
+
+We have to set things up in a way that dwm is started whenever we start
+our xserver.
+To do so we make a file called .xinitrc in our home directory.
+
+	# cd ~
+	# echo exec dwm >> .xinitrc
+
+Now we need a terminal emulator to use when we start our window manager.
+I like suckless software, for this reason we will use st, the simple terminal.
+Like dwm, we download and compile the source code
+
+	# cd ~/docs/repos
+	# git clone https://git.suckless.org/st
+	# cd st
+	# sudo make clean install
+
+We also install the menu bar used by dwm, which is dmenu.
+
+	# cd ~/docs/repos
+	# git clone https://git.suckless.org/dmenu
+	# cd dmenu
+	# sudo make clean install
+
+Now we have to set up the software component that will handle our network
+connections.
+In this case we use network-manager.
+
+	# sudo apt install network-manager
+
+For power management we use tlp.
+
+	# sudo apt install tlp
+
+We use pulseaudio for our sound server and load default configuration
+
+	# sudo apt install pulseaudio pavucontrol pulseaudio-utils
+	# cd ~
+	# mkdir -p .config/pulse
+	# cp /etc/pulse/client.conf ~/.config/pulse/
+
+To monitor our system we use htop and conky
+
+	# sudo apt install htop conky
+
+We also need to install fonts to use.
+I use linux-libertine and inconsolata.
+
+	# sudo apt install fonts-linuxlibertine fonts-inconsolata
+
+We now install a web browser, always useful.
+My browser of choice is still firefox.
+
+	# sudo apt install firefox-esr
+
+To start the xserver we use the command
+
+	# startx
