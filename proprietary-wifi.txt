@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+HOW TO FIX PROPRETARY WIFI DRIVERS
+
+If you are like me, when you tried to run nmtui there was no wifi connection
+available.
+While you were installing debian, probably some message about missing firmware
+pooped up at a given time.
+Now is the moment to fix this issue.
+To do so we have to add the contrib and non-free components.
+Add, using your text editor of choice (by default debian comes with nano),
+contrib non-free right after each line that ends with main
+/etc/apt/sources.list.
+
+	# sudo $EDITOR /etc/apt/sources.list
+
+To list all the missing firmware run the following command
+
+	# sudo dmesg | grep 'firmware: failed to load'
+
+To search for the appropriate packages we use apt-file.
+We first need to install it and update it
+
+	# sudo apt install apt-file
+	# sudo apt-file update
+
+Then we can find our missing firmware running
+
+	apt-file find <missing-firmware>
