@@ -17,4 +17,8 @@ You can install the needed driver with apt get install or running the command
     # sudo apt install $(nvidia-detect | grep "It is recommended to install the" -A 1 | tail -n1)
 
 If a pop up window in the terminal opens up, it's ok just press ok.
+To easily monitor your gpu from the command line install nvidia-smi
+
+    # sudo apt install nvidia-smi
+
 Then reboot your machine
