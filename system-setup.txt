@@ -56,6 +56,11 @@ To do so we make a file called .xinitrc in our home directory.
 	# cd ~
 	# echo exec dwm >> .xinitrc
 
+We also need a way to add a background image.
+To do so we use a program called feh.
+
+    # suo apt install feh
+
 Now we need a terminal emulator to use when we start our window manager.
 I like suckless software, for this reason we will use st, the simple terminal.
 Like dwm, we download and compile the source code
