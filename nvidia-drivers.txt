@@ -1,0 +1,20 @@
+--------------------------------------------------------------------------------
+HOW CAN I INSTALL NVIDIA DRIVERS?
+
+First we have to add 'contrib non-free' in /etc/apt/sources.list.
+Read the file proprietary-wifi.txt to learn more.
+Then we have to install the nvidia-detect utility
+
+    # sudo apt install nvidia-detect
+
+We now use this tool to detect the appropriate nvidia driver for
+the card installed.
+
+    # nvidia-detect
+
+You can install the needed driver with apt get install or running the command
+
+    # sudo apt install $(nvidia-detect | grep "It is recommended to install the" -A 1 | tail -n1)
+
+If a pop up window in the terminal opens up, it's ok just press ok.
+Then reboot your machine
