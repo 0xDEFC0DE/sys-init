@@ -25,4 +25,4 @@ We first need to install it and update it
 
 Then we can find our missing firmware running
 
-	apt-file find <missing-firmware>
+    # apt-file find <missing-firmware>
