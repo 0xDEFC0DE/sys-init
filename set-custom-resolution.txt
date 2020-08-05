@@ -1,15 +1,18 @@
-First create a "modeline" using cvt.
+To add a custom resolution the first step is to add the following lines
+to /etc/X11/xorg.conf
+
+	Section "Monitor"
+		Identifier "<xrandr-output>"
+		<output-of-cvt>
+	EndSection
+
+where the cvt command works as follows
 
 	# cvt <width> <height> <refresh-rate>
 
-now tell this to xrandr.
+this step will make the new resolution permanent.
+If you want to use it as default, you can insert the following command
+in yout .xinitrc file before running the window manager
 
-	# xrandr --newmode <cvt-output-after-Modeline> 
-
-Then add the new mode to the table of possible resolutions.
-
-	# xrandr --addmode <output> <mode-name>
-
-The changes are lost after reboot, to make them permanent
-add the commands abobe to your .xprofile file.
+	# xrandr --output <xrandr-output> --mode <your-new-mode>
 
