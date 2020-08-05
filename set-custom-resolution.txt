@@ -1,0 +1,15 @@
+First create a "modeline" using cvt.
+
+	# cvt <width> <height> <refresh-rate>
+
+now tell this to xrandr.
+
+	# xrandr --newmode <cvt-output-after-Modeline> 
+
+Then add the new mode to the table of possible resolutions.
+
+	# xrandr --addmode <output> <mode-name>
+
+The changes are lost after reboot, to make them permanent
+add the commands abobe to your .xprofile file.
+
